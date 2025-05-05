@@ -1,0 +1,438 @@
+body {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* 白色背景 */
+    color: #333;
+    line-height: 1.6;
+    font-weight: 700; /* 全部 Bold */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo{
+    font-size: 30px;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #fff; /* 白色 Header 背景 */
+    color: #333;
+    position: relative; /* 確保背景圖片正確定位 */
+    overflow: hidden; /* 裁剪超出邊界的遮罩 */
+    padding-bottom: 80px; /* 為 hero-container 騰出空間 */
+    display: flex; /* 使 header 內容可以垂直置中 */
+    justify-content: center; /* 水平置中 header 內容 (hero-container) */
+    align-items: center; /* 垂直置中 header 內容 (hero-container) */
+    min-height: 60vh; /* 確保 header 至少佔據一定高度 */
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/hero.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0; /* 放在最下方 */
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* 白色 20% 遮罩 */
+    z-index: 1; /* 放在背景圖片之上 */
+}
+
+
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 224, 230, 1); /* 淡粉色導覽列背景，略微透明 */
+    padding: 15px 20px;
+    border-radius: 25px; /* 圓角矩形 */
+    position: absolute; /* 相對於 header 定位 */
+    top: 20px; /* 調整導覽列的垂直位置 */
+    left: 50%;
+    transform: translateX(-50%); /* 水平置中導覽列 */
+    z-index: 3; /* 確保在遮罩之上 */
+    width: 100%; /* 調整導覽列寬度 */
+    max-width: 1200px; /* 與 container 寬度一致 */
+}
+
+
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 12px; /* 增加一些內邊距，方便 hover 效果 */
+    border-radius: 5px; /* 預設按鈕也給一點圓角 */
+    transition: background-color 0.3s ease; /* 平滑的 hover 效果 */
+}
+
+header nav ul li a:hover {
+    background-color: rgba(255, 105, 180, 0.2); /* 桃紅色 hover 背景 */
+    border-radius: 20px; /* Hover 時更大的圓角 */
+}
+
+/* Hero Section (Content and Video) - 左右分割，文字垂直 */
+.hero-container {
+    display: flex;
+    justify-content: center; /* 水平置中 hero 內容 */
+    align-items: center; /* 垂直置中 hero 內容 */
+    max-width: 1200px; /* 限制 hero 內容的最大寬度 */
+    width: 90%; /* 佔據 header 的大部分寬度 */
+    position: relative;
+    z-index: 2; /* 確保在遮罩之上 */
+    margin-top: 200px;
+}
+
+.hero-content {
+    flex: 1; /* 佔據左邊的空間 */
+    display: flex;
+    flex-direction: column; /* 垂直排列文字和按鈕 */
+    align-items: flex-start; /* 左對齊內容 */
+    text-align: left;
+    padding-right: 300px; /* 與影片間隔 */
+    padding-left: 55px; /* 新增或調整左邊的內邊距，向右移動 */
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 1px; /* 縮小標題與副標題的間距 */
+    color: #ffffff;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px; /* 縮小副標題與按鈕的間距 */
+    color: #ffdcdc;
+}
+
+.hero-video {
+    width: 560px; /* 固定影片寬度 */
+    height: 315px; /* 固定影片高度 */
+    border-radius: 5px;
+}
+
+.hero-video iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px; /* 按鈕垂直間距 */
+}
+
+.button.primary {
+    background-color: #ffe0e6; /* 淡粉色主要按鈕 */
+    color: #333;
+}
+
+.button.secondary {
+    background-color: #f08080; /* 較深的粉色次要按鈕 */
+    color: #fff;
+    margin-left: 0; /* 移除左邊的 margin */
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #ffb3c1; /* 更淺的粉色 hover 效果 */
+}
+
+/* Features Section */
+.features {
+    padding: 60px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.features .feature-item {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.features .feature-item img {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.features .feature-item h3 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.features .feature-item p {
+    color: #777;
+}
+
+/* Contact Section */
+.contact {
+    padding: 60px 0;
+    background-color: #f8f8f8; /* 淺灰色聯絡區塊背景 */
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form button[type="submit"] {
+    padding: 12px 24px;
+    background-color: #ffe0e6;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1em;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #ffb3c1;
+}
+
+/* Footer */
+footer {
+    background-color: #ffb3c1; /* 淡粉色 Footer 背景 */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        min-height: auto; /* 移除最小高度限制 */
+        padding-bottom: 40px; /* 調整小螢幕上的底部內邊距 */
+    }
+
+    .hero-container {
+        flex-direction: column; /* 小螢幕上垂直排列 */
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+        align-items: center; /* 小螢幕上文字內容置中對齊 */
+        text-align: center;
+    }
+
+    .hero-video {
+        width: 100%; /* 小螢幕上影片寬度 100% */
+        height: auto;
+    }
+
+    .hero-content .button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header nav {
+        width: 95%; /* 調整小螢幕導覽列寬度 */
+    }
+
+    header nav ul {
+        display: none; /* 在小螢幕上隱藏導覽列，可考慮加入漢堡選單 */
+    }
+}
+
+
+/* Evaluation Section */
+.evaluation {
+    padding: 60px 0;
+    background-color: #f7f3f3; /* 與聯絡我們區塊背景色一致 */
+    text-align: center;
+}
+
+.evaluation h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.evaluation-table {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: auto; /* 處理小螢幕上的表格溢出 */
+}
+
+.evaluation-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden; /* 為了讓 border-radius 生效 */
+}
+
+.evaluation-table th,
+.evaluation-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.evaluation-table th {
+    background-color: #ffe0e6; /* 與按鈕顏色相似 */
+    color: #333;
+    font-weight: bold;
+}
+
+.evaluation-table tbody tr:nth-child(odd) {
+    background-color: #fff; /* 白色奇數行 */
+}
+
+.evaluation-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* 淺灰色偶數行 */
+}
+
+.evaluation-table tbody tr:last-child td {
+    border-bottom: none; /* 移除最後一行的底部邊框 */
+}
+
+/* Responsive adjustments for evaluation table */
+@media (max-width: 600px) {
+    .evaluation-table table,
+    .evaluation-table thead,
+    .evaluation-table tbody,
+    .evaluation-table th,
+    .evaluation-table td,
+    .evaluation-table tr {
+        display: block;
+    }
+
+    .evaluation-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .evaluation-table tr {
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .evaluation-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+    }
+
+    .evaluation-table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        content: attr(data-column);
+    }
+
+    .evaluation-table td:nth-of-type(1):before { content: "目標"; }
+    .evaluation-table td:nth-of-type(2):before { content: "%"; }
+    .evaluation-table td:nth-of-type(3):before { content: "說明"; }
+}
